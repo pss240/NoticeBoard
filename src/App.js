@@ -10,7 +10,8 @@ class App extends Component {
     this.state = {
       data:["list1","list2","list3",],
       create:false,
-      update:false
+      update:false,
+      changetesting:''
     }
   }
   createData=(text)=>{

@@ -22,7 +22,6 @@ class Create extends Component{
                     <input type="text" value={this.state.value} onChange={this.handleChange}></input>
                     <input type="submit" value="Submit"></input>
                 </form>
-                
             </div>
         );
     }

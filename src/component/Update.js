@@ -10,7 +10,6 @@ class Update extends Component{
         }
     }
     handleUpdate=(i)=>{
-        console.log(i)
         this.setState({
             mode:true,
             index:i,
@@ -21,16 +20,16 @@ class Update extends Component{
         this.setState({updateData:e.target.value})
     }
     handleSubmit=(e)=>{
-        this.props.updateData(e.target.updatetext.value,this.state.index)
+        this.props.updateData(this.state.updateData,this.state.index)
         e.preventDefault();
     }
     render(){
         var list=[];
         for(var i=0;i<this.state.data.length;i++){
-            list.push(<li key={i}><a href="#" onClick={
+            list.push(<li key={i}><a href="#" data-id={i} onClick={
                 (e)=>{ 
                     e.preventDefault();
-                    this.handleUpdate(i)
+                    this.handleUpdate(e.target.dataset.id)
             }}>{this.state.data[i]}</a></li>)
         }
         return(
@@ -41,7 +40,7 @@ class Update extends Component{
                             {list}
                         </ol>
                         <form onSubmit={this.handleSubmit}>
-                           <input id="updatetext" type="text" value={this.state.updateData}></input>
+                           <input id="updatetext" type="text" value={this.state.updateData} onChange={this.handleChange}></input>
                            <input type="submit" value="Submit"></input>
                         </form>
                     </span>:

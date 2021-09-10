@@ -8,7 +8,7 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      data:["list1","list2","list5"],
+      data:["list1","list2","list3",],
       create:false,
       update:false
     }
@@ -36,9 +36,6 @@ class App extends Component {
         {
           this.state.create===true ? <Create createData={this.createData}></Create>: ''
         }
-        <button onClick={()=>{
-          this.setState({data:["state list1","state list2","state list3"]});
-          }}>setState</button>
         <button onClick={()=>{
           {this.state.create===false ? this.setState({create:true}):this.setState({create:false})};
         }}>Create</button>

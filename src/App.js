@@ -8,23 +8,31 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      data:["list1","list2","list3",],
+      data:[{id:0,content:"list1"},
+            {id:1,content:"list2"},
+            {id:2,content:"list3"}],
       create:false,
-      update:false,
-      changetesting:''
+      update:false
     }
   }
   createData=(text)=>{
     const nextdata=this.state.data
-    nextdata.push(text)
+    nextdata.push({id:this.state.data.length,content:text})
     this.setState({data:nextdata})
   }
   updateData=(text,index)=>{
     const nextdata=this.state.data;
-    nextdata[index]=text;
+    nextdata[index].content=text;
     this.setState({
       data:nextdata,
       update:false
+    })
+  }
+  deleteData=(index)=>{
+    const nextdata=this.state.data;
+    nextdata.splice(index,1);
+    this.setState({
+      data:nextdata
     })
   }
   render(){
@@ -32,7 +40,7 @@ class App extends Component {
       <div className="App">
         {this.state.update ? 
           <Update content={this.state.data} updateData={this.updateData}></Update>:
-          <Read content = {this.state.data}></Read>
+          <Read content = {this.state.data} deleteData={this.deleteData}></Read>
         }
         {
           this.state.create===true ? <Create createData={this.createData}></Create>: ''

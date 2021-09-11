@@ -13,7 +13,7 @@ class Update extends Component{
         this.setState({
             mode:true,
             index:i,
-            updateData:this.state.data[i]
+            updateData:this.state.data[i].content
         });
     }
     handleChange=(e)=>{
@@ -30,7 +30,7 @@ class Update extends Component{
                 (e)=>{ 
                     e.preventDefault();
                     this.handleUpdate(e.target.dataset.id)
-            }}>{this.state.data[i]}</a></li>)
+            }}>{this.state.data[i].content}</a></li>)
         }
         return(
             <div>
